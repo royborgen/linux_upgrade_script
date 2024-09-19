@@ -15,14 +15,9 @@ This script performs system updates for packages managed by APT, Snap, and Flatp
    chmod +x update_script.sh
    ```
 2. Run the script:
-`./upgrade`
+`./upgrade.sh`
 
-## Script Breakdown
-* Updates and upgrades APT packages.
-* Refreshes Snap packages.
-* Upgrades Flatpak packages without prompting for user interaction.
-
-Requirements
+## Requirements
 * Debian based Linux distribution
 * snap package manager installed
 * flatpak package manager installed
