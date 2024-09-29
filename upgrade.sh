@@ -11,4 +11,4 @@ echo ""
 echo "${CYAN}Checking Flatpak:${NOCOLOR}"
 flatpak upgrade --noninteractive
 echo ""
-test -e /var/run/reboot-required && echo "${YELLOW}Reboot is required!${NOCOLOR}"
+test -e /var/run/reboot-required && echo "${YELLOW}An update requires reboot!${NOCOLOR}" && echo ""                                                               
