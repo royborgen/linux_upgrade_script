@@ -19,6 +19,8 @@ if [ -e /usr/bin/snap ]; then
 	echo ""
 fi
 
+
+#checking if flatpak is installed before trying to upgrade packages
 if [ -e /usr/bin/flatpak ]; then
 	echo "${CYAN}Checking Flatpak:${NOCOLOR}"
 	flatpak upgrade --noninteractive
