@@ -24,24 +24,23 @@ if [ -e /usr/bin/apt ]; then
 	sudo apt update && sudo apt upgrade $1
 	echo ""
 fi
+echo ""
 
 #checking if snap is installed before trying to upgrade packages
 if [ -e /usr/bin/snap ]; then
+	echo "${CYAN}Checking Snap:${NOCOLOR}"
 	if [ $# -ne 0 ]; then
 		if [ $1 = "-y" ] || [ $1 = "-yes" ]; then
-			echo "${CYAN}Checking Snap:${NOCOLOR}"
 			sudo snap refresh 
 			echo ""
 		fi
 	else
-		updates=$(sudo snap refresh --list)
-
+		updates=$(sudo snap refresh --list)  
+		
 		# Check if there are updates
 		if [ -z "$updates" ]; then
-		    echo "All snaps up to date."
+		    echo ""
 		else
-		    # If updates are available, prompt for confirmation
-		    echo "$updates"
 		    read -p "Do you want to install these updates? (Y/n): " confirmation
 
 		    if [[ "$confirmation" == "y" || "$confirmation" == "Y" ] || "$confirmation" == "" ]; then
