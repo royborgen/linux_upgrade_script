@@ -39,11 +39,10 @@ if [ -e /usr/bin/snap ]; then
 		
 		# Check if there are updates
 		if [ -z "$updates" ]; then
-		    echo ""
+		    echo "$updates"
 		else
 		    read -p "Do you want to install these updates? (Y/n): " confirmation
-
-		    if [[ "$confirmation" == "y" || "$confirmation" == "Y" ] || "$confirmation" == "" ]; then
+		    if [ "$confirmation" = "y" ] || [ "$confirmation" = "Y" ] || [ -z "$confirmation" ]; then
 			# If user confirms, perform the update
 			sudo snap refresh
 		    else
