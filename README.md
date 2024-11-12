@@ -12,7 +12,7 @@ The script performs the following functions:
 
 ## Usage
 
-```bash
+```
 Usage: upgrade [OPTION]
 Performs system updates for packages managed by APT, Snap, and Flatpak on a Linux systems.
 
