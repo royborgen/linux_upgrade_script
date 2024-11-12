@@ -22,7 +22,7 @@ Optional arguments:
 ```
 
 ## Features
-- Updates are grouped by package manager, with color-coded messages for each.
+- Updates are grouped by package manager, with color-coded section headings for each.
 - Reboot requirement notices are highlighted in yellow if a restart is needed.
 
 ## Requirements
