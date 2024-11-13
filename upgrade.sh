@@ -30,7 +30,6 @@ if [ -e /usr/bin/apt ]; then
 	fi
 	echo ""
 fi
-echo ""
 
 #checking if snap is installed before trying to upgrade packages
 if [ -e /usr/bin/snap ]; then
