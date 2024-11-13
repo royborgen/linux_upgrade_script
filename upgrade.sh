@@ -29,6 +29,7 @@ if [ -e /usr/bin/apt ]; then
 		sudo apt update && sudo apt upgrade
 	fi
 	echo ""
+	echo ""
 fi
 
 #checking if snap is installed before trying to upgrade packages
