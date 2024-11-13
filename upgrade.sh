@@ -21,7 +21,13 @@ fi
 #checking if apt is installed before upgrading packages
 if [ -e /usr/bin/apt ]; then
 	echo "${CYAN}Checking APT:${NOCOLOR}"
-	sudo apt update && sudo apt upgrade $1
+	if [ $# -ne 0 ]; then
+		if [ $1 = "-y" ] || [ $1 = "--yes" ]; then
+			sudo apt update && sudo apt upgrade -y
+		fi
+	else
+		sudo apt update && sudo apt upgrade
+	fi
 	echo ""
 fi
 echo ""
@@ -30,7 +36,7 @@ echo ""
 if [ -e /usr/bin/snap ]; then
 	echo "${CYAN}Checking Snap:${NOCOLOR}"
 	if [ $# -ne 0 ]; then
-		if [ $1 = "-y" ] || [ $1 = "-yes" ]; then
+		if [ $1 = "-y" ] || [ $1 = "--yes" ]; then
 			sudo snap refresh 
 			echo ""
 		fi
@@ -41,12 +47,12 @@ if [ -e /usr/bin/snap ]; then
 		if [ -z "$updates" ]; then
 		    echo "$updates"
 		else
-		    read -p "Do you want to install these updates? (Y/n): " confirmation
-		    if [ "$confirmation" = "y" ] || [ "$confirmation" = "Y" ] || [ -z "$confirmation" ]; then
+		    read -p "Do you want to install these updates? (Y/n): " confirm
+		    if [ "$confirm" = "y" ] || [ "$confirm" = "Y" ] || [ -z "$confirm" ]; then
 			# If user confirms, perform the update
 			sudo snap refresh
 		    else
-			echo "Updates cancelled."
+			echo "Snap upgrade cancelled."
 		    fi
 		fi
 
