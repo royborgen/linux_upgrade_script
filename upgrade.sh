@@ -14,12 +14,12 @@ if [ $# -ne 0 ]; then
 		echo "-y, --yes          does not prompt before applying updates"
 		echo "-h, --help         displays this message"
 		
-		exit 
+		eflatpak
 	fi 
 fi
 
 #checking if apt is installed before upgrading packages
-if [ -e /usr/bin/apt ]; then
+if [ ! -z $(whereis apt | awk '{ print $2 }') ]; then
 	echo "${CYAN}Checking APT:${NOCOLOR}"
 	if [ $# -ne 0 ]; then
 		if [ $1 = "-y" ] || [ $1 = "--yes" ]; then
@@ -33,7 +33,7 @@ if [ -e /usr/bin/apt ]; then
 fi
 
 #checking if snap is installed before trying to upgrade packages
-if [ -e /usr/bin/snap ]; then
+if [ ! -z $(whereis snap | awk '{ print $2 }') ]; then
 	echo "${CYAN}Checking Snap:${NOCOLOR}"
 	if [ $# -ne 0 ]; then
 		if [ $1 = "-y" ] || [ $1 = "--yes" ]; then
@@ -44,7 +44,7 @@ if [ -e /usr/bin/snap ]; then
 		updates=$(sudo snap refresh --list)  
 		
 		# Check if there are updates
-		if [ -z "$updates" ]; then
+		if [ ! -z "$updates" ]; then
 		    echo "$updates"
 		else
 		    read -p "Do you want to install these updates? (Y/n): " confirm
@@ -62,7 +62,7 @@ fi
 
 
 #checking if flatpak is installed before trying to upgrade packages
-if [ -e /usr/bin/flatpak ]; then
+if [ ! -z $(whereis flatpak | awk '{ print $2 }') ]; then
 	echo "${CYAN}Checking Flatpak:${NOCOLOR}"
 	
 	#checking if argument was provided
