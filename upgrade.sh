@@ -13,7 +13,7 @@ if [ $# -ne 0 ]; then
 		echo "Optional arguments:"
 		echo "-y, --yes          does not prompt before applying updates"
 		echo "-h, --help         displays this message"
-		
+		exit
 	fi 
 fi
 
