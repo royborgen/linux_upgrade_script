@@ -14,7 +14,6 @@ if [ $# -ne 0 ]; then
 		echo "-y, --yes          does not prompt before applying updates"
 		echo "-h, --help         displays this message"
 		
-		eflatpak
 	fi 
 fi
 
