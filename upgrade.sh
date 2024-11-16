@@ -66,7 +66,7 @@ if [ ! -z $(whereis flatpak | awk '{ print $2 }') ]; then
 	
 	#checking if argument was provided
 	if [ $# -ne 0 ]; then
-		if [ $1 = "-y" ] || [ $1 = "-yes" ]; then
+		if [ $1 = "-y" ] || [ $1 = "--yes" ]; then
 			flatpak upgrade --noninteractive
 		fi
 	else
