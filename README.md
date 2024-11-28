@@ -31,4 +31,4 @@ Optional arguments:
 - Non-interactive Mode: Use -y to skip prompts, useful for automated environments.
 
 ## License
-This project is open-source and distributed under the MIT License.
+This project is open-source and distributed under the GPL-2.0 license 
