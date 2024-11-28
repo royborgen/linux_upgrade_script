@@ -44,9 +44,8 @@ if [ ! -z $(whereis snap | awk '{ print $2 }') ]; then
 		updates=$(sudo snap refresh --list)  
 		
 		# Check if there are updates
-		if [ -z "$updates" ]; then
+		if [ -n "$updates" ]; then
 		    echo "$updates"
-		else
 		    read -p "Do you want to install these updates? (Y/n): " confirm
 		    if [ "$confirm" = "y" ] || [ "$confirm" = "Y" ] || [ -z "$confirm" ]; then
 			# If user confirms, perform the update
