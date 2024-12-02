@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #setting text color
-CYAN='\033[0;36m'
+CYAN='\033[1;36m'
 YELLOW='\033[1;33m'
 NOCOLOR='\033[0m'
 
