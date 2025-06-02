@@ -20,7 +20,7 @@ The script performs the following functions:
 
 ```
 Usage: upgrade [OPTION]
-Performs system updates for packages managed by APT, Snap, and Flatpak on a Linux systems.
+Performs package updates on Debian and Arch based distributions by updating APT, pacman, yay, snap, and Flatpak packages.
 
 Optional arguments:
 -y, --yes          does not prompt before applying updates
