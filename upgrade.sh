@@ -51,10 +51,10 @@ if [ ! -z $(whereis yay | awk '{ print $2 }') ]; then
 	echo "${CYAN}Checking yay:${NOCOLOR}"
 	if [ $# -ne 0 ]; then
 		if [ $1 = "-y" ] || [ $1 = "--yes" ]; then
-			sudo yay -Syu --noconfirm
+			yay -Syu --noconfirm
 		fi
 	else
-		sudo yay -Syu
+		yay -Syu
 	fi
 	echo ""
 	echo ""
