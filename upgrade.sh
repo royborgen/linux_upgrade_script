@@ -5,6 +5,8 @@ CYAN='\033[1;36m'
 YELLOW='\033[1;33m'
 NOCOLOR='\033[0m'
 
+
+#Checking arguments and displaying help text and error message
 if [ $# -ne 0 ]; then
 	if [ $1 = "-h" ] || [ $1 = "--help" ]; then
 		echo "Usage: upgrade [OPTION]"
@@ -13,6 +15,13 @@ if [ $# -ne 0 ]; then
 		echo "Optional arguments:"
 		echo "-y, --yes          does not prompt before applying updates"
 		echo "-h, --help         displays this message"
+		echo ""
+		exit
+	fi 
+	
+	if [ "$1" != "-y" ] && [ "$1" != "--yes" ]; then
+		echo "ERROR: Unsupported argument '$1'."
+		echo "Please use -h or --help to display usage instructions and valid options."
 		echo ""
 		exit
 	fi 
