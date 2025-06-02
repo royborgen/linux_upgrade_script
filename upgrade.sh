@@ -11,7 +11,7 @@ if [ $# -ne 0 ]; then
 	if [ $1 = "-h" ] || [ $1 = "--help" ]; then
 		echo "Usage: upgrade [OPTION]"
 		echo "Performs package updates on Debian and Arch based distributions"
-		echo "by updating APT, pacman, yay, snap, and Flatpak packages."
+		echo "Upgrades APT, pacman, yay, snap, and Flatpak packages."
 		echo ""
 		echo "Optional arguments:"
 		echo "-y, --yes          does not prompt before applying updates"
