@@ -8,7 +8,7 @@ NOCOLOR='\033[0m'
 if [ $# -ne 0 ]; then
 	if [ $1 = "-h" ] || [ $1 = "--help" ]; then
 		echo "Usage: upgrade [OPTION]"
-		echo "Performs system updates for packages managed by APT, Snap, and Flatpak on a Linux systems."
+		echo "Performs package updates on Debian and Arch based distributions by updating APT, pacman, yey, snap, and Flatpak packages."
 		echo ""
 		echo "Optional arguments:"
 		echo "-y, --yes          does not prompt before applying updates"

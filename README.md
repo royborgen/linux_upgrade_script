@@ -1,6 +1,10 @@
 # Linux System Update Script
 
-This script performs system updates on Linux by updating APT (Debian-based package manager), Snap, and Flatpak packages with a single command. It checks if each package manager is installed on the system before attempting updates and provides options for non-interactive updates and help.
+
+This script streamlines package updates for both Debian-based and Arch-based Linux distributions. With a single command, it updates all system packages. It checks if each package manager is installed on the system before attempting updates and provides options for non-interactive updates and help. 
+
+**Supported package managers:** APT, Pacman, Yay, Flatpak, and Snap. 
+
 
 ## Script Overview
 
