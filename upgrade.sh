@@ -32,6 +32,34 @@ if [ ! -z $(whereis apt | awk '{ print $2 }') ]; then
 	echo ""
 fi
 
+#checking if pacman is installed before upgrading packages
+if [ ! -z $(whereis pacman | awk '{ print $2 }') ]; then
+	echo "${CYAN}Checking pacman:${NOCOLOR}"
+	if [ $# -ne 0 ]; then
+		if [ $1 = "-y" ] || [ $1 = "--yes" ]; then
+			sudo pacman -Syu --noconfirm
+		fi
+	else
+		sudo pacman -Syu
+	fi
+	echo ""
+	echo ""
+fi
+
+#checking if yey is installed before upgrading packages
+if [ ! -z $(whereis yey | awk '{ print $2 }') ]; then
+	echo "${CYAN}Checking yey:${NOCOLOR}"
+	if [ $# -ne 0 ]; then
+		if [ $1 = "-y" ] || [ $1 = "--yes" ]; then
+			sudo yey -Syu --noconfirm
+		fi
+	else
+		sudo yey -Syu
+	fi
+	echo ""
+	echo ""
+fi
+
 #checking if snap is installed before trying to upgrade packages
 if [ ! -z $(whereis snap | awk '{ print $2 }') ]; then
 	echo "${CYAN}Checking Snap:${NOCOLOR}"
@@ -58,7 +86,6 @@ if [ ! -z $(whereis snap | awk '{ print $2 }') ]; then
 		echo ""
 	fi
 fi
-
 
 #checking if flatpak is installed before trying to upgrade packages
 if [ ! -z $(whereis flatpak | awk '{ print $2 }') ]; then
