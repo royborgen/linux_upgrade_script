@@ -21,7 +21,7 @@ The script performs the following functions:
 ```
 Usage: upgrade [OPTION]
 Performs package updates on Debian and Arch based distributions.
-Upgrades APT, pacman, yay, snap, and Flatpak packages..
+Upgrades APT, pacman, yay, snap, and Flatpak packages.
 
 Optional arguments:
 -y, --yes          does not prompt before applying updates
