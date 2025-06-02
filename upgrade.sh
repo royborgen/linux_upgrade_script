@@ -8,7 +8,7 @@ NOCOLOR='\033[0m'
 if [ $# -ne 0 ]; then
 	if [ $1 = "-h" ] || [ $1 = "--help" ]; then
 		echo "Usage: upgrade [OPTION]"
-		echo "Performs package updates on Debian and Arch based distributions by updating APT, pacman, yey, snap, and Flatpak packages."
+		echo "Performs package updates on Debian and Arch based distributions by updating APT, pacman, yay, snap, and Flatpak packages."
 		echo ""
 		echo "Optional arguments:"
 		echo "-y, --yes          does not prompt before applying updates"
@@ -46,15 +46,15 @@ if [ ! -z $(whereis pacman | awk '{ print $2 }') ]; then
 	echo ""
 fi
 
-#checking if yey is installed before upgrading packages
-if [ ! -z $(whereis yey | awk '{ print $2 }') ]; then
-	echo "${CYAN}Checking yey:${NOCOLOR}"
+#checking if yay is installed before upgrading packages
+if [ ! -z $(whereis yay | awk '{ print $2 }') ]; then
+	echo "${CYAN}Checking yay:${NOCOLOR}"
 	if [ $# -ne 0 ]; then
 		if [ $1 = "-y" ] || [ $1 = "--yes" ]; then
-			sudo yey -Syu --noconfirm
+			sudo yay -Syu --noconfirm
 		fi
 	else
-		sudo yey -Syu
+		sudo yay -Syu
 	fi
 	echo ""
 	echo ""
