@@ -33,7 +33,7 @@ Optional arguments:
 - Reboot requirement notices are highlighted in yellow if a restart is needed.
 
 ## Requirements
-- APT, Snap, or Flatpak installed (any or all of them).
+- APT, pacman, yay, Snap, or Flatpak installed (any or all of them).
 - Root Privileges: The script automatically execute needed commands with sudo to perform updates.
 - Non-interactive Mode: Use -y to skip prompts, useful for automated environments.
 
