@@ -21,19 +21,6 @@ if [ $# -ne 0 ]; then
 	fi 
 	
 	if [ "$1" != "-y" ] && [ "$1" != "--yes" ]; then
-#checking if yay is installed before upgrading packages
-if [ ! -z $(whereis yay | awk '{ print $2 }') ]; then
-	echo -e "${CYAN}Checking yay:${NOCOLOR}"
-	if [ $# -ne 0 ]; then
-		if [ $1 = "-y" ] || [ $1 = "--yes" ]; then
-			yay -Syu --noconfirm
-		fi
-	else
-		yay -Syu
-	fi
-	echo ""
-	echo ""
-fi
 		echo "ERROR: Unsupported argument '$1'."
 		echo "Please use -h or --help to display usage instructions and valid options."
 		echo ""
