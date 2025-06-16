@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #setting text color
 CYAN='\033[1;36m'
@@ -11,7 +11,7 @@ if [ $# -ne 0 ]; then
 	if [ $1 = "-h" ] || [ $1 = "--help" ]; then
 		echo "Usage: upgrade [OPTION]"
 		echo "Performs package updates on Debian and Arch based distributions"
-		echo "Upgrades APT, pacman, yay, snap, and Flatpak packages."
+		echo "Upgrades APT, DNF, pacman, yay, snap, and Flatpak packages."
 		echo ""
 		echo "Optional arguments:"
 		echo "-y, --yes          does not prompt before applying updates"
@@ -21,6 +21,19 @@ if [ $# -ne 0 ]; then
 	fi 
 	
 	if [ "$1" != "-y" ] && [ "$1" != "--yes" ]; then
+#checking if yay is installed before upgrading packages
+if [ ! -z $(whereis yay | awk '{ print $2 }') ]; then
+	echo -e "${CYAN}Checking yay:${NOCOLOR}"
+	if [ $# -ne 0 ]; then
+		if [ $1 = "-y" ] || [ $1 = "--yes" ]; then
+			yay -Syu --noconfirm
+		fi
+	else
+		yay -Syu
+	fi
+	echo ""
+	echo ""
+fi
 		echo "ERROR: Unsupported argument '$1'."
 		echo "Please use -h or --help to display usage instructions and valid options."
 		echo ""
@@ -30,7 +43,7 @@ fi
 
 #checking if apt is installed before upgrading packages
 if [ ! -z $(whereis apt | awk '{ print $2 }') ]; then
-	echo "${CYAN}Checking APT:${NOCOLOR}"
+	echo -e "${CYAN}Checking APT:${NOCOLOR}"
 	if [ $# -ne 0 ]; then
 		if [ $1 = "-y" ] || [ $1 = "--yes" ]; then
 			sudo apt update && sudo apt upgrade -y
@@ -44,7 +57,7 @@ fi
 
 #checking if pacman is installed before upgrading packages
 if [ ! -z $(whereis pacman | awk '{ print $2 }') ]; then
-	echo "${CYAN}Checking pacman:${NOCOLOR}"
+	echo -e "${CYAN}Checking pacman:${NOCOLOR}"
 	if [ $# -ne 0 ]; then
 		if [ $1 = "-y" ] || [ $1 = "--yes" ]; then
 			sudo pacman -Syu --noconfirm
@@ -58,7 +71,7 @@ fi
 
 #checking if yay is installed before upgrading packages
 if [ ! -z $(whereis yay | awk '{ print $2 }') ]; then
-	echo "${CYAN}Checking yay:${NOCOLOR}"
+	echo -e "${CYAN}Checking yay:${NOCOLOR}"
 	if [ $# -ne 0 ]; then
 		if [ $1 = "-y" ] || [ $1 = "--yes" ]; then
 			yay -Syu --noconfirm
@@ -70,9 +83,23 @@ if [ ! -z $(whereis yay | awk '{ print $2 }') ]; then
 	echo ""
 fi
 
+#checking if DNF is installed before upgrading packages
+if [ ! -z $(whereis dnf | awk '{ print $2 }') ]; then
+	echo -e "${CYAN}Checking DNF:${NOCOLOR}"
+	if [ $# -ne 0 ]; then
+		if [ $1 = "-y" ] || [ $1 = "--yes" ]; then
+			sudo dnf upgrade -y
+		fi
+	else
+		sudo dnf upgrade
+	fi
+	echo ""
+	echo ""
+fi
+
 #checking if snap is installed before trying to upgrade packages
 if [ ! -z $(whereis snap | awk '{ print $2 }') ]; then
-	echo "${CYAN}Checking Snap:${NOCOLOR}"
+	echo -e "${CYAN}Checking Snap:${NOCOLOR}"
 	if [ $# -ne 0 ]; then
 		if [ $1 = "-y" ] || [ $1 = "--yes" ]; then
 			sudo snap refresh 
@@ -99,7 +126,7 @@ fi
 
 #checking if flatpak is installed before trying to upgrade packages
 if [ ! -z $(whereis flatpak | awk '{ print $2 }') ]; then
-	echo "${CYAN}Checking Flatpak:${NOCOLOR}"
+	echo -e "${CYAN}Checking Flatpak:${NOCOLOR}"
 	
 	#checking if argument was provided
 	if [ $# -ne 0 ]; then

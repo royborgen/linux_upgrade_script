@@ -11,7 +11,8 @@ This script streamlines package updates for both Debian- and Arch-based Linux di
 The script performs the following functions:
 1. **APT updates**: Runs sudo and updates and upgrades packages managed by APT if it is installed. Prompts for confirmation unless `-y` option is provided. User will be prompted for sudo password. 
 2. **pacman updates**: Runs sudo, syncronizes and updates all packages managed by pacman if installed. Prompts for confirmations unless `-y` or `--yes` is provided. 
-2. **yay updates**: Synchronizes and updates all packages managed by pacman if installed. Prompts for confirmations unless `-y` or `--yes` is provided. 
+3. **yay updates**: Synchronizes and updates all packages managed by pacman if installed. Prompts for confirmations unless `-y` or `--yes` is provided. 
+4. **DNF updates**: Refreshes repository metadata and updataes all packages managed by DNF if installed. Prompts for confirmations unless `-y` or `--yes` is provided. 
 5. **Snap updates**: Runs sudo and checks for Snap updates and prompts for confirmation unless `-y` or `--yes` option is provided.
 6. **Flatpak updates**: Checks for updates to Platpak packages if installed. Prompts user for confirmation unless `-y` or `--yes` option is provided.
 7. **Reboot Notification**: Notifies if a system restart is required after updates.
@@ -21,7 +22,7 @@ The script performs the following functions:
 ```
 Usage: upgrade [OPTION]
 Performs package updates on Debian and Arch based distributions.
-Upgrades APT, pacman, yay, snap, and Flatpak packages.
+Upgrades APT, DNF, pacman, yay, snap, and Flatpak packages.
 
 Optional arguments:
 -y, --yes          does not prompt before applying updates
