@@ -126,4 +126,4 @@ if [ ! -z $(whereis flatpak | awk '{ print $2 }') ]; then
         echo ""
 fi
 #checking if restart is needed 
-test -e /var/run/reboot-required && echo "${YELLOW}An update requires reboot!${NOCOLOR}" && echo ""
+test -e /var/run/reboot-required && echo -e "${YELLOW}An update requires reboot!${NOCOLOR}" && echo ""
