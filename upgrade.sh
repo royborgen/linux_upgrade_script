@@ -81,7 +81,6 @@ if [ ! -z $(whereis dnf | awk '{ print $2 }') ]; then
 		sudo dnf upgrade
 	fi
 	echo ""
-	echo ""
 fi
 
 #checking if snap is installed before trying to upgrade packages
