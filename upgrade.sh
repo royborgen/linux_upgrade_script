@@ -42,8 +42,24 @@ if [ ! -z $(whereis apt | awk '{ print $2 }') ]; then
 	echo ""
 fi
 
+#checking if yay is installed before upgrading packages
+if [ ! -z $(whereis yay | awk '{ print $2 }') ]; then
+	#setting foundyay to 1 so we do not install upgrades from pacman
+	foundyay=1
+	echo -e "${CYAN}Checking yay:${NOCOLOR}"
+	if [ $# -ne 0 ]; then
+		if [ $1 = "-y" ] || [ $1 = "--yes" ]; then
+			yay -Syu --noconfirm
+		fi
+	else
+		yay -Syu
+	fi
+	echo ""
+	echo ""
+fi
+
 #checking if pacman is installed before upgrading packages
-if [ ! -z $(whereis pacman | awk '{ print $2 }') ]; then
+if [ -n "$(whereis pacman | awk '{ print $2 }')" ] && [ "$foundyay" -eq 0 ]; then
 	echo -e "${CYAN}Checking pacman:${NOCOLOR}"
 	if [ $# -ne 0 ]; then
 		if [ $1 = "-y" ] || [ $1 = "--yes" ]; then
@@ -56,19 +72,6 @@ if [ ! -z $(whereis pacman | awk '{ print $2 }') ]; then
 	echo ""
 fi
 
-#checking if yay is installed before upgrading packages
-if [ ! -z $(whereis yay | awk '{ print $2 }') ]; then
-	echo -e "${CYAN}Checking yay:${NOCOLOR}"
-	if [ $# -ne 0 ]; then
-		if [ $1 = "-y" ] || [ $1 = "--yes" ]; then
-			yay -Syu --noconfirm
-		fi
-	else
-		yay -Syu
-	fi
-	echo ""
-	echo ""
-fi
 
 #checking if DNF is installed before upgrading packages
 if [ ! -z $(whereis dnf | awk '{ print $2 }') ]; then
