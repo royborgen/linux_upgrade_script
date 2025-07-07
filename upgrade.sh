@@ -5,6 +5,9 @@ CYAN='\033[1;36m'
 YELLOW='\033[1;33m'
 NOCOLOR='\033[0m'
 
+#setting variable to keep track if yay is installed to 0 by default
+foundyay=0
+
 
 #Checking arguments and displaying help text and error message
 if [ $# -ne 0 ]; then
@@ -41,6 +44,7 @@ if [ ! -z $(whereis apt | awk '{ print $2 }') ]; then
 	echo ""
 	echo ""
 fi
+
 
 #checking if yay is installed before upgrading packages
 if [ ! -z $(whereis yay | awk '{ print $2 }') ]; then
