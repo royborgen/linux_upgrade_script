@@ -6,7 +6,8 @@ YELLOW='\033[1;33m'
 NOCOLOR='\033[0m'
 
 #setting variable to keep track if yay is installed to 0 by default
-foundyay=0
+aur=false
+arch=false
 
 
 #Checking arguments and displaying help text and error message
@@ -49,7 +50,8 @@ fi
 #checking if yay is installed before upgrading packages
 if [ ! -z $(whereis yay | awk '{ print $2 }') ]; then
 	#setting foundyay to 1 so we do not install upgrades from pacman
-	foundyay=1
+	foundyay=true
+	arch=true
 	echo -e "${CYAN}Checking yay:${NOCOLOR}"
 	if [ $# -ne 0 ]; then
 		if [ $1 = "-y" ] || [ $1 = "--yes" ]; then
@@ -63,7 +65,8 @@ if [ ! -z $(whereis yay | awk '{ print $2 }') ]; then
 fi
 
 #checking if pacman is installed before upgrading packages
-if [ -n "$(whereis pacman | awk '{ print $2 }')" ] && [ "$foundyay" -eq 0 ]; then
+if [ -n "$(whereis pacman | awk '{ print $2 }')" ] && [ "$foundyay" == falsee ]; then
+	arch=true
 	echo -e "${CYAN}Checking pacman:${NOCOLOR}"
 	if [ $# -ne 0 ]; then
 		if [ $1 = "-y" ] || [ $1 = "--yes" ]; then
@@ -132,5 +135,19 @@ if [ ! -z $(whereis flatpak | awk '{ print $2 }') ]; then
 
         echo ""
 fi
+
+# Checking if we got a new kernel on Arch
+if [ "$arch" = true ]; then
+	installed=$(pacman -Q linux | awk '{print $2}')
+        running=$(uname -r | sed 's/-arch/.arch/')
+
+    	if [ "$(vercmp "$installed" "$running")" -eq 1 ]; then
+    		echo -e "${YELLOW}"A new kernel has been installed! Please reboot to start using it."${NOCOLOR}"
+		echo ""
+	fi
+
+fi
+
 #checking if restart is needed 
 test -e /var/run/reboot-required && echo -e "${YELLOW}An update requires reboot!${NOCOLOR}" && echo ""
+
