@@ -25,7 +25,7 @@ usage() {
 }
 
 #function to run a command with optional yes flag
-un_update() {
+run_update() {
     local cmd="$1"
     local args="$2"
     if $YES; then
