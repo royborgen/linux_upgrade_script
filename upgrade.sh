@@ -121,7 +121,7 @@ fi
 
 # Checking if we got a new kernel on Arch
 if [ "$arch" = true ] && command -v pacman >/dev/null 2>&1; then
-    installed=$(pacman -Q linux | awk '{print $2}')
+    installed=$(pacman -Qe linux | awk '{print $2}')
     running=$(uname -r | sed 's/-arch/.arch/')
     if [ "$(vercmp "$installed" "$running")" -ne 0 ]; then
         echo -e "${YELLOW}A new kernel has been installed! Please reboot to start using it.${NOCOLOR}"
