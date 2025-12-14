@@ -50,7 +50,7 @@ fi
 #checking if yay is installed before upgrading packages
 if [ ! -z $(whereis yay | awk '{ print $2 }') ]; then
 	#setting foundyay to 1 so we do not install upgrades from pacman
-	foundyay=true
+	aur=true
 	arch=true
 	echo -e "${CYAN}Checking yay:${NOCOLOR}"
 	if [ $# -ne 0 ]; then
@@ -65,7 +65,7 @@ if [ ! -z $(whereis yay | awk '{ print $2 }') ]; then
 fi
 
 #checking if pacman is installed before upgrading packages
-if [ -n "$(whereis pacman | awk '{ print $2 }')" ] && [ "$foundyay" == falsee ]; then
+if [ -n "$(whereis pacman | awk '{ print $2 }')" ] && [ "$aur" == false ]; then
 	arch=true
 	echo -e "${CYAN}Checking pacman:${NOCOLOR}"
 	if [ $# -ne 0 ]; then
