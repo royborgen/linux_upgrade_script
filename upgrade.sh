@@ -121,8 +121,17 @@ fi
 
 # Checking if we got a new kernel on Arch
 if [ "$arch" = true ] && command -v pacman >/dev/null 2>&1; then
-    installed=$(pacman -Qe linux | awk '{print $2}')
-    running=$(uname -r | sed 's/-arch/.arch/')
+    if [ -f /etc/os-release ]; then
+        . /etc/os-release
+    	if [[ "$ID" == "cachyos" ]]; then
+	    installed=$(pacman -Qe linux-cachyos | awk '{print $2}')
+            running=$(uname -r | sed 's/-cachyos//')
+    	else
+	    #we are running vanilla Arch	
+    	    installed=$(pacman -Qe linux | awk '{print $2}')
+    	    running=$(uname -r | sed 's/-arch/.arch/')
+        fi
+    fi
     if [ "$(vercmp "$installed" "$running")" -ne 0 ]; then
         echo -e "${YELLOW}A new kernel has been installed! Please reboot to start using it.${NOCOLOR}"
         echo ""
@@ -131,4 +140,3 @@ fi
 
 #checking if restart is needed (Debian/Ubuntu)
 test -e /var/run/reboot-required && echo -e "${YELLOW}An update requires reboot!${NOCOLOR}" && echo ""
-
