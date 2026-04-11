@@ -1,7 +1,7 @@
 # Linux System Update Script
 
 
-This script streamlines package updates for both Debian- and Arch-based Linux distributions. With a single command, it updates all system packages. It checks if each package manager is installed on the system before attempting updates and provides options for non-interactive updates and help. 
+This script streamlines package updates for both Debian, Red Hat and Arch-based Linux distributions. With a single command, it updates all system packages. With a single command, it updates all system packages. aIt checks if each package manager is installed on the system before attempting updates and provides options for non-interactive updates and help. 
 
 **Supported package managers:** APT, DNF, Pacman, Yay, Flatpak, and Snap. 
 
